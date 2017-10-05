@@ -17,10 +17,12 @@ class LoadData():
 	def masterOUT(self):
 		#ip: prob. score df, op: OUT file
 		pass
-
+	
 data = LoadData()
 
-data.load_data('../data/protein.fasta')
+data.fasta2sfasta('../data/protein.fasta')
+
+
 
 
 
