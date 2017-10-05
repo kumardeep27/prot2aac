@@ -58,5 +58,7 @@ print(abc)
 
 
 
+#compp = data.sfasta2aac(sfasta)
+data.sfasta2aac(sfasta)
 
 
