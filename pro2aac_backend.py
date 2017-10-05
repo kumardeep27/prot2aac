@@ -40,23 +40,33 @@ class LoadData():
 		df = pd.DataFrame()
 		comp=[None]*20
 		aa= ('A','C','D','E','F','G','H','I','K','L','M','N','P','Q','R','S','T','V','W','Y')
-		for i in range(20):
-			comp[i]=0
-			
+		rowname=[]	
 		for key, value in dictsfasta.items() :
 			#print (key, value)
+			key = key.replace('>', '')
+			rowname.append(key)
+			lenn=len(value)
+			print(lenn)
+			for i in range(20):
+				comp[i]=0
 			for c in value:
 				comp[aa.index(c)] += 1
 			print(type(comp))
 			print(comp)
-			dff=np.array(comp)
-			dff=pd.Series(dff)
+			comp[:] = [x / lenn for x in comp]
+			dff=np.array(comp)			#crucial
+			dff=pd.Series(dff)			#crucial
 			print(type(dff))
 			print(dff)
-			df = df.append(dff,ignore_index=True)	#not working
+			df = df.append(dff,ignore_index=True)	#crucial
 		#print(comp)
-		print(type(df))
-		#return comp
+		print(rowname)
+		df.columns = aa
+		df.index = rowname
+		df = df*100
+		df = df.round(2)
+		print((df))
+		return df
 		
 
 	def runSVM(self):

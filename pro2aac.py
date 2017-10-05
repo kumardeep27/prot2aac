@@ -17,6 +17,8 @@ print(abc)
 
 
 #compp = data.sfasta2aac(sfasta)
-data.sfasta2aac(sfasta)
+aac = data.sfasta2aac(sfasta)
+
+aac.to_csv('df.tsv',header=True,index=True,mode='w',sep='\t')
 
 
